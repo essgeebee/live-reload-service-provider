@@ -44,7 +44,6 @@ class LiveReloadListener implements EventSubscriberInterface {
     /**
      * Check for server presence
      * @var boolean
-     * @unused
      */
     protected $check_server_presence;
 
@@ -52,7 +51,7 @@ class LiveReloadListener implements EventSubscriberInterface {
      * Constructor
      * @param array $params
      */
-    public function __construct(array $params = array())
+    public function __construct(\Pimple $params)
     {
         $this->host = $params['host'];
         $this->port = $params['port'];

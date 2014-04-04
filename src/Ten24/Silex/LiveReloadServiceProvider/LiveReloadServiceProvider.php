@@ -27,15 +27,17 @@ class LiveReloadServiceProvider implements ServiceProviderInterface
                 'enabled' => true,
                 'check_server_presence' => true);
     
-        if ($app->offsetExists('ten24.livereload.options'))
+        if (!$app->offsetExists('ten24.livereload.options'))
         {
-            $app['ten24.livereload.options'] = array_replace(
-                $defaults,
-                $app['ten24.livereload.options']);
+            $app['ten24.livereload.options'] = new \Pimple($defaults);
         }
-        else 
+        
+        foreach ($defaults as $key => $value)
         {
-            $app['ten24.livereload.options'] = $defaults;
+            if (!isset($app['ten24.livereload.options'][$key]))
+            {
+                $app['ten24.livereload.options']->set($key, $value);
+            }
         }
     }
 
