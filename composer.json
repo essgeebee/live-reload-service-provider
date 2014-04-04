@@ -1,0 +1,22 @@
+{
+    "name": "essgeebee/live-reload-service-provider",
+    "description": "A Silex ServiceProvider for use in conjunction with Grunt-Contrib-Watch",
+    "keywords": ["silex", "service-provider"],
+    "license": "unlicense",
+    "authors": [
+        {
+            "name": "Blair D. Patterson",
+            "email": "blair@tentwentyfour.ca",
+            "homepage": "http://www.tentwentyfour.ca/"
+        }
+    ],
+    "require": {
+        "silex/silex": "~1.0",
+    },
+    "require-dev":{
+        "symfony/browser-kit": "~2.1"
+    },
+    "autoload": {
+        "psr-0": { "Ten24\\Silex": "src" }
+    }
+}
