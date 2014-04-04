@@ -7,9 +7,10 @@
  * 
  * @author blair <blair@tentwentyfour.ca>
  */
-namespace Ten24\Silex;
+namespace Ten24\Silex\LiveReloadServiceProvider;
 
 use Silex\Application;
+use Silex\ServiceProviderInterface;
 
 class LiveReloadServiceProvider implements ServiceProviderInterface
 {

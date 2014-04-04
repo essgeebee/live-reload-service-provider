@@ -12,7 +12,7 @@
  * @author blair <blair@tentwentyfour.ca>
  */
 
-namespace Ten24\Silex;
+namespace Ten24\Silex\LiveReloadServiceProvider;
  
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
