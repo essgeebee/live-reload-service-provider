@@ -23,19 +23,47 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class LiveReloadListener implements EventSubscriberInterface {
 
+    /**
+     * Enable the livereload server
+     * @var boolean
+     */
     protected $enabled;
+    
+    /**
+     * Hostname of the livereload server
+     * @var string
+     */
     protected $host;
+    
+    /**
+     * Port of the livereload server
+     * @var integer
+     */
     protected $port;
+    
+    /**
+     * Check for server presence
+     * @var boolean
+     * @unused
+     */
     protected $check_server_presence;
 
-    public function __construct($host = 'localhost', $port = 35729, $enabled = true, $check_server_presence = true)
+    /**
+     * Constructor
+     * @param array $params
+     */
+    public function __construct(array $params = array())
     {
-        $this->host = $host;
-        $this->port = $port;
-        $this->enabled = $enabled;
-        $this->check_server_presence = $check_server_presence;
+        $this->host = $params['host'];
+        $this->port = $params['port'];
+        $this->enabled = $params['enabled'];
+        $this->check_server_presence = $params['check_server_presence'];
     }
 
+    /**
+     * Watch Kernel Response Event
+     * @param FilterResponseEvent $event
+     */
     public function onKernelResponse(FilterResponseEvent $event)
     {
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
@@ -69,10 +97,13 @@ class LiveReloadListener implements EventSubscriberInterface {
      */
     protected function injectScript(Response $response)
     {
-        if (function_exists('mb_stripos')) {
+        if (function_exists('mb_stripos')) 
+        {
             $posrFunction   = 'mb_strripos';
             $substrFunction = 'mb_substr';
-        } else {
+        } 
+        else 
+        {
             $posrFunction   = 'strripos';
             $substrFunction = 'substr';
         }
@@ -80,10 +111,12 @@ class LiveReloadListener implements EventSubscriberInterface {
         $content = $response->getContent();
         $pos = $posrFunction($content, '</body>');
 
-        if (false !== $pos) {
+        if (false !== $pos) 
+        {
             $script = "http://$this->host:$this->port/livereload.js";
 
-            if ($this->check_server_presence) {
+            if ($this->check_server_presence) 
+            {
                 $headers = @get_headers($script);
                 if (!is_array($headers) || strpos($headers[0], '200') === false) {
                     return;
@@ -95,6 +128,10 @@ class LiveReloadListener implements EventSubscriberInterface {
         }
     }
 
+    /**
+     * 
+     * @return multitype:multitype:string number
+     */
     public static function getSubscribedEvents()
     {
         return array(
