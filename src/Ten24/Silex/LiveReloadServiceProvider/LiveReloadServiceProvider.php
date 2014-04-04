@@ -22,7 +22,7 @@ class LiveReloadServiceProvider implements ServiceProviderInterface
     public function register(Application $app)
     {
         $defaults = array(
-                'host' => 'here',
+                'host' => 'localhost',
                 'port' => 35729,
                 'enabled' => true,
                 'check_server_presence' => true);
