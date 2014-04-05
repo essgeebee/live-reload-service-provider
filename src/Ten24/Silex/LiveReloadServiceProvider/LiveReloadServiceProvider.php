@@ -21,24 +21,27 @@ class LiveReloadServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $defaults = array(
+        $app['ten24.livereload.default_options'] = array(
                 'host' => 'localhost',
                 'port' => 35729,
                 'enabled' => true,
                 'check_server_presence' => true);
-    
-        if (!$app->offsetExists('ten24.livereload.options'))
-        {
-            $app['ten24.livereload.options'] = new \Pimple($defaults);
-        }
         
-        foreach ($defaults as $key => $value)
-        {
-            if (!isset($app['ten24.livereload.options'][$key]))
+        $app['ten24.livereloader'] = $app->share(function($app){
+            
+            if ($app->offsetExists('ten24.livereload.options'))
             {
-                $app['ten24.livereload.options']->set($key, $value);
+                $app['ten24.livereload.options'] = array_merge($app['ten24.livereload.default_options'], $app['ten24.livereload.options']);
             }
-        }
+            else 
+            {
+                $app['ten24.livereload.options'] = $app['ten24.livereload.default_options'];
+            }
+            
+            $params = $app['ten24.livereload.options'];
+            
+        	return new LiveReloadListener($params);
+        });
     }
 
     /**
@@ -49,6 +52,6 @@ class LiveReloadServiceProvider implements ServiceProviderInterface
     public function boot(Application $app)
     {
         $app['dispatcher']->addSubscriber(
-            new LiveReloadListener($app['ten24.livereload.options']));
+            $app['ten24.livereloader']);
     }
 }

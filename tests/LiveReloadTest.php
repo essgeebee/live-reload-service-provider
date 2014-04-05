@@ -9,6 +9,8 @@
  * @author blair <blair@tentwentyfour.ca>
  */
 
+namespace Ten24\Tests\Silex;
+
 use Silex\Application;
 use Silex\WebTestCase;
 use Silex\Provider;
