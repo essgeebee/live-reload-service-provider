@@ -2,7 +2,7 @@
     "name": "essgeebee/live-reload-service-provider",
     "description": "A Silex ServiceProvider for use in conjunction with Grunt-Contrib-Watch",
     "keywords": ["silex", "service-provider"],
-    "license": "unlicense",
+    "license": "Unlicense",
     "authors": [
         {
             "name": "Blair D. Patterson",
@@ -20,6 +20,6 @@
         "psr-0": { "Ten24\\Silex": "src" }
     },
     "require-dev": {
-        "silexphp/silex-webprofiler"
+        "silexphp/silex-webprofiler": "~1.0"
     }
 }
