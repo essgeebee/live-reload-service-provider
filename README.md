@@ -12,7 +12,7 @@ $app['ten24.livereload.options'] = array(
   'host' => 'localhost',
   'enabled' => true,
   'check_server_presence' => true);
-$app->register(new Ten24\Silex\LiveReloadServiceProvider\LiveReloadServiceProvider());
+$app->register(new Ten24\Silex\Provider\LiveReloadServiceProvider());
 ```
 
 Once registered, the provider will inject a livereload.js script before the ending body tag. When used in conjunction with grunt-contrib-watch, your JS, SCSS, LESS, or other tasks you've configured in your Gruntfile.js will run and trigger a page/asset refresh when Grunt tasks have finished successfully.
@@ -22,7 +22,7 @@ Once registered, the provider will inject a livereload.js script before the endi
 ```php
 if ($app['env'] == 'dev')
 {
-    $app->register(new Provider\WebProfilerServiceProvider(), array(
+    $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
             'profiler.cache_dir' => $app['cache.path'].'/profiler',
             'profiler.mount_prefix' => '/_profiler',
     ));
