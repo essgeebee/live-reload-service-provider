@@ -11,7 +11,7 @@ $app['ten24.livereload.options'] = array(
   'port' => 35599,
   'host' => 'localhost',
   'enabled' => true,
-  'check_for_server_presence' => true);
+  'check_server_presence' => true);
 $app->register(new Ten24\Silex\LiveReloadServiceProvider\LiveReloadServiceProvider());
 ```
 
@@ -24,7 +24,7 @@ The following options are available, the provider looks in $app['ten24.livereloa
 - host (optional, default: 'localhost')
 - port (optional, default: 35729)
 - enabled (optional, default: true)
-- check_for_server_presence (optional, default: true)
+- check_server_presence (optional, default: true)
 
 ##Example
 
