@@ -51,7 +51,7 @@ class LiveReloadListener implements EventSubscriberInterface {
      * Constructor
      * @param array $params
      */
-    public function __construct(\Pimple $params)
+    public function __construct(array $params = array())
     {
         $this->host = $params['host'];
         $this->port = $params['port'];

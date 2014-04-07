@@ -37,6 +37,7 @@ class LiveReloadTest extends WebTestCase
         $app['debug'] = true;
         $app['exception_handler']->disable();
         
+        // Register the ServiceProvider
         $app->register(new LiveReloadServiceProvider());
         
         $app->get(self::$url, function(){
@@ -79,7 +80,9 @@ class LiveReloadTest extends WebTestCase
      */
     public function testEnabledOption()
     {
-        $this->app['ten24.livereload.options']['enabled'] = false;
+        // Set a single option, others should be defaults
+        $this->app['ten24.livereload.options'] = array(
+                'enabled' => false);
         
         $client = $this->createClient();
         $crawler = $client->request('GET', self::$url);
@@ -94,11 +97,12 @@ class LiveReloadTest extends WebTestCase
      */
     public function testAlternateHostAndPortOptions()
     {
-        $this->app['ten24.livereload.options']['host'] = 'www.nowhere.com';
-        $this->app['ten24.livereload.options']['port'] = '3179';
-        
+        // Set alternate host and port options - other options will be defaults
         // Won't check that livereload is actually running there, that's out of scope.
-        $this->app['ten24.livereload.options']['check_server_presence'] = false;
+        $this->app['ten24.livereload.options'] = array(
+                'host' => 'www.nowhere.com',
+                'port' => '3179',
+                'check_server_presence' => false);
         
         $host = $this->app['ten24.livereload.options']['host'];
         $port = $this->app['ten24.livereload.options']['port'];
