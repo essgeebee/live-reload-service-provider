@@ -1,7 +1,7 @@
 live-reload-service-provider
 =========================
 
-A Silex Service Provider for use in conjunction with Grunt-Contrib-Watch
+A Silex Service Provider for use in conjunction with Grunt-Contrib-Watch.
 
 ## Registering the ServiceProvider
 
@@ -16,6 +16,18 @@ $app->register(new Ten24\Silex\LiveReloadServiceProvider\LiveReloadServiceProvid
 ```
 
 Once registered, the provider will inject a livereload.js script before the ending body tag. When used in conjunction with grunt-contrib-watch, your JS, SCSS, LESS, or other tasks you've configured in your Gruntfile.js will run and trigger a page/asset refresh when Grunt tasks have finished successfully.
+
+**Note** This injection is dependant on the presence of an X-DEBUG-TOKEN response header. The simplest way to achieve this is to use Silex's Web Profiler (https://github.com/silexphp/Silex-WebProfiler). Plus it gives you a buinch of other great tools while you're in dev.
+
+```php
+if ($app['env'] == 'dev')
+{
+    $app->register(new Provider\WebProfilerServiceProvider(), array(
+            'profiler.cache_dir' => $app['cache.path'].'/profiler',
+            'profiler.mount_prefix' => '/_profiler',
+    ));
+}
+```
 
 ##Options
 
