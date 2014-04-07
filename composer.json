@@ -18,5 +18,7 @@
     },
     "autoload": {
         "psr-0": { "Ten24\\Silex": "src" }
-    }
+    },
+    "require-dev": {
+        "silexphp/silex-webprofiler"
 }

@@ -1,13 +1,13 @@
 <?php
 /*
- * This file is part of LiveReloadServiceProvider. 
+ * This file is part of live-reload-service-provider. 
  * 
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code. 
  * 
  * @author blair <blair@tentwentyfour.ca>
  */
-namespace Ten24\Silex\LiveReloadServiceProvider;
+namespace Ten24\Silex\Provider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;

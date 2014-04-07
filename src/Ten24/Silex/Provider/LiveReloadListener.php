@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of LiveReloadServiceProvider.
+ * This file is part of liver-reload-service-provider package.
  * 
  * Many thanks to Kunstmaan and their LiveReloadBundle for SF2 for this code
  * @url https://github.com/Kunstmaan/KunstmaanLiveReloadBundle/
@@ -12,7 +12,7 @@
  * @author blair <blair@tentwentyfour.ca>
  */
 
-namespace Ten24\Silex\LiveReloadServiceProvider;
+namespace Ten24\Silex\Provider;
  
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +21,8 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-class LiveReloadListener implements EventSubscriberInterface {
+class LiveReloadListener implements EventSubscriberInterface 
+{
 
     /**
      * Enable the livereload server
