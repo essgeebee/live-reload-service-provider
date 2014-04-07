@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of liver-reload-service-provider package.
+ * This file is part of live-reload-service-provider package.
  * 
  * Many thanks to Kunstmaan and their LiveReloadBundle for SF2 for this code
  * @url https://github.com/Kunstmaan/KunstmaanLiveReloadBundle/
