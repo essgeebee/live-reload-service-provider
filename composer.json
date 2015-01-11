@@ -1,8 +1,8 @@
 {
-    "name": "essgeebee/live-reload-service-provider",
-    "description": "A Silex ServiceProvider for use in conjunction with Grunt-Contrib-Watch",
+    "name": "tentwofour/live-reload-service-provider",
+    "description": "A Silex Service Provider for use in conjunction with Grunt-Contrib-Watch",
     "keywords": ["silex", "service-provider"],
-    "license": "Unlicense",
+    "license": "MIT",
     "authors": [
         {
             "name": "Blair D. Patterson",
